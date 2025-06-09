@@ -4,16 +4,14 @@
 #include <list>
 
 struct MidiEvent {
-  enum class Type {
-    NoteOff,
-    NoteOn,
-    Other
-  } event;
-
+  enum class Type { NoteOff, NoteOn, Other } event;
   uint8_t nKey = 0;
   uint8_t nVelocity = 0;
-  uint32_t nWallTick = 0;
   uint32_t nDeltaTick = 0;
+
+  MidiEvent(Type e, uint8_t key, uint8_t velocity, uint32_t deltaTick)
+      : event(e), nKey(key), nVelocity(velocity), nDeltaTick(deltaTick) {}
+  MidiEvent() = default;
 };
 
 struct MidiNote {
@@ -21,6 +19,10 @@ struct MidiNote {
   uint8_t nVelocity = 0;
   uint32_t nStartTime = 0;
   uint32_t nDuration = 0;
+
+  MidiNote(uint8_t key, uint8_t velocity, uint32_t startTime, uint32_t duration)
+      : nKey(key), nVelocity(velocity), nStartTime(startTime), nDuration(duration) {}
+  MidiNote() = default;
 };
 
 struct MidiTrack {
@@ -322,5 +324,7 @@ class MidiFile {
 };
 
 int main() {
+  MidiFile midiFile("test.mid");
+  midiFile.ParseFile("test.mid");
   return 0;
 }
