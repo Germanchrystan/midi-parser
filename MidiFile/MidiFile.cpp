@@ -2,44 +2,44 @@
 #include <fstream>
 #include <algorithm>
 
-struct MidiEvent
-{
-  enum class Type
-  {
-    NoteOff,
-    NoteOn,
-    Other
-  } event;
-  uint8_t nKey = 0;
-  uint8_t nVelocity = 0;
-  uint32_t nDeltaTick = 0;
+// struct MidiEvent
+// {
+//   enum class Type
+//   {
+//     NoteOff,
+//     NoteOn,
+//     Other
+//   } event;
+//   uint8_t nKey = 0;
+//   uint8_t nVelocity = 0;
+//   uint32_t nDeltaTick = 0;
 
-  MidiEvent(Type e, uint8_t key, uint8_t velocity, uint32_t deltaTick)
-      : event(e), nKey(key), nVelocity(velocity), nDeltaTick(deltaTick) {}
-  MidiEvent() = default;
-};
+//   MidiEvent(Type e, uint8_t key, uint8_t velocity, uint32_t deltaTick)
+//       : event(e), nKey(key), nVelocity(velocity), nDeltaTick(deltaTick) {}
+//   MidiEvent() = default;
+// };
 
-struct MidiNote
-{
-  uint8_t nKey = 0;
-  uint8_t nVelocity = 0;
-  uint32_t nStartTime = 0;
-  uint32_t nDuration = 0;
+// struct MidiNote
+// {
+//   uint8_t nKey = 0;
+//   uint8_t nVelocity = 0;
+//   uint32_t nStartTime = 0;
+//   uint32_t nDuration = 0;
 
-  MidiNote(uint8_t key, uint8_t velocity, uint32_t startTime, uint32_t duration)
-      : nKey(key), nVelocity(velocity), nStartTime(startTime), nDuration(duration) {}
-  MidiNote() = default;
-};
+//   MidiNote(uint8_t key, uint8_t velocity, uint32_t startTime, uint32_t duration)
+//       : nKey(key), nVelocity(velocity), nStartTime(startTime), nDuration(duration) {}
+//   MidiNote() = default;
+// };
 
-struct MidiTrack
-{
-  std::string sName;
-  std::string sInstrument;
-  std::vector<MidiEvent> vecEvents;
-  std::vector<MidiNote> vecNotes;
-  uint8_t nMaxNote = 64;
-  uint8_t nMinNote = 64;
-};
+// struct MidiTrack
+// {
+//   std::string sName;
+//   std::string sInstrument;
+//   std::vector<MidiEvent> vecEvents;
+//   std::vector<MidiNote> vecNotes;
+//   uint8_t nMaxNote = 64;
+//   uint8_t nMinNote = 64;
+// };
 
 MidiFile::MidiFile(const std::string &sFilename)
 {

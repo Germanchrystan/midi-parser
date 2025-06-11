@@ -1,4 +1,4 @@
-#include "MidiFile.h"
+#include "./Analyzer/Analyzer.h"
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -6,8 +6,8 @@
 
 //  g++ -std=c++11 main.cpp MidiFile.cpp -o midi_parser
 int main() {
-  MidiFile midiFile("test-s.mid");
-  midiFile.ParseFile("test-s.mid");
+  Analyzer analyzer("test-s.mid");
+  analyzer.Analyze();
 
   return 0;
 }
